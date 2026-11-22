@@ -14,7 +14,9 @@ class TrackerViewSet(ModelViewSet):
     permission_classes = [IsAuthenticated, IsOwner]
 
     def get_queryset(self):
-        return Tracker.objects.filter(user=self.request.user)
+        if self.action == "list":
+            return Tracker.objects.filter(user=self.request.user)
+        return Tracker.objects.all()
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
