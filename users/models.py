@@ -6,7 +6,7 @@ from django.db import models
 class User(AbstractUser):
     username = models.CharField(max_length=20, null=True, blank=True)
     email = models.EmailField(unique=True)
-    tg_chat_id = models.CharField(max_length=50, null=True, blank=True)
+    tg_chat_id = models.CharField(max_length=50, null=True, blank=True, verbose_name="Telegram Chat ID")
 
     USERNAME_FIELD = 'email'
 
