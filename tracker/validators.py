@@ -1,5 +1,6 @@
 from rest_framework.serializers import ValidationError
 
+
 class TrackerValidator:
     def __init__(self, reward: str, tracker_stacking: str):
         self.reward = reward
@@ -21,7 +22,12 @@ class RangeValidator:
 
     def __call__(self, attrs: dict):
         value = attrs.get(self.completion_time)
-        if value is not None and isinstance(value, (int, float)) and not isinstance(value, bool) and not (self.min_value <= value <= self.max_value):
+        if (
+            value is not None
+            and isinstance(value, (int, float))
+            and not isinstance(value, bool)
+            and not (self.min_value <= value <= self.max_value)
+        ):
             raise ValidationError("Время выполнения должно быть от 1 до 120 секунд")
 
 

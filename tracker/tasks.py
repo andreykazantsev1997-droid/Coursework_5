@@ -20,10 +20,7 @@ def send_habit_reminders():
 
     sent_count = 0
     for item in trackers:
-        text = (
-            f"Я буду {item.action} в "
-            f"{item.time.strftime('%H:%M')} в {item.place}"
-        )
+        text = f"Я буду {item.action} в " f"{item.time.strftime('%H:%M')} в {item.place}"
         send_telegram_message(chat_id=item.user.tg_chat_id, text=text)
         sent_count += 1
 

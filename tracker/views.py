@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.generics import ListAPIView
@@ -6,6 +5,7 @@ from tracker.models import Tracker
 from tracker.paginators import CustomPaginator
 from tracker.permissions import IsOwner
 from tracker.serializers import TrackerSerializer
+
 
 # Create your views here.
 class TrackerViewSet(ModelViewSet):
@@ -27,4 +27,3 @@ class TrackerListAPIView(ListAPIView):
     pagination_class = CustomPaginator
     permission_classes = [IsAuthenticated]
     queryset = Tracker.objects.filter(publicness=True)
-
